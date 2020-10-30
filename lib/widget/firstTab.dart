@@ -4,8 +4,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class firstTab extends StatelessWidget {
+
+
   @override
   Widget build(BuildContext context) {
+
     return Mytopappbar(
       text: Text("Merhaba").toString(),
       style: TextStyle(
@@ -20,8 +23,8 @@ class firstTab extends StatelessWidget {
           child: RaisedButton(
             onPressed: (){
               Navigator.push(context,
-              CheckIs.check?CupertinoPageRoute((context)=>PurplePage(),:):
-              )
+              CheckIs.check?CupertinoPageRoute(builder:(context) => PurplePage()):CupertinoPageRoute(builder:(context) => PurplePage())
+              );
             },
           ),
         ),

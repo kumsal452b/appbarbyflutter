@@ -4,7 +4,7 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 
 class CheckIs extends State {
-  static bool check;
+  static bool check=false;
   @override
   void initState() {
     Platform.isIOS?check=true:check=false;
