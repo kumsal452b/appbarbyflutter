@@ -10,7 +10,6 @@ final GlobalKey<NavigatorState> secondTabNavKey = GlobalKey<NavigatorState>();
 final GlobalKey<NavigatorState> thirdTabNavKey = GlobalKey<NavigatorState>();
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
-
   final String title;
 
   @override
@@ -21,44 +20,52 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
 
-   return CupertinoTabScaffold(
-      tabBar: CupertinoTabBar(
-        items: [
-          BottomNavigationBarItem(
-              icon: Icon(Icons.home_sharp),
-              title: Text("Home")
+   return Scaffold(
+    appBar: AppBar(
 
-          ),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.build),
-              title: Text("Option")
-          ),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.message),
-              title: Text("Message")
-          )
-        ],
-      ),
-     tabBuilder: (contex,index){
-        if(index==0){
-          return CupertinoTabView(
-            navigatorKey: firstTabNavKey,
-            builder: (context)=>firstTab(),
-          );
-        }
-        else if(index==1){
-          return CupertinoTabView(
-            navigatorKey: secondTabNavKey,
-            builder: (context)=>seccondTab(),
-          );
-        }
-        else{
-          return CupertinoTabView(
-            navigatorKey: thirdTabNavKey,
-            builder: (context)=>thirsTab(),
-          );
-        }
-     },
+      title: Text(widget.title),
+     
+
+    ),
+     body: CupertinoTabScaffold(
+        tabBar: CupertinoTabBar(
+          items: [
+            BottomNavigationBarItem(
+                icon: Icon(Icons.home_sharp),
+                title: Text("Home")
+
+            ),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.build),
+                title: Text("Option")
+            ),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.message),
+                title: Text("Message")
+            )
+          ],
+        ),
+       tabBuilder: (contex,index){
+          if(index==0){
+            return CupertinoTabView(
+              navigatorKey: firstTabNavKey,
+              builder: (context)=>firstTab(),
+            );
+          }
+          else if(index==1){
+            return CupertinoTabView(
+              navigatorKey: secondTabNavKey,
+              builder: (context)=>seccondTab(),
+            );
+          }
+          else{
+            return CupertinoTabView(
+              navigatorKey: thirdTabNavKey,
+              builder: (context)=>thirsTab(),
+            );
+          }
+       },
+     ),
    );
   }
 }
