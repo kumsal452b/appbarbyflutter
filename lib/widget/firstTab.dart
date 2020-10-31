@@ -1,4 +1,5 @@
 import 'package:appbarbyflutter/isIOS.dart';
+import 'package:appbarbyflutter/screens/vehicles.dart';
 import 'package:appbarbyflutter/widget/myTopBar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -9,24 +10,39 @@ class firstTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    return Mytopappbar(
-      text: Text("Merhaba").toString(),
-      style: TextStyle(
-        fontSize: 10,
-        color: Colors.black
+    return DefaultTabController(
+      length: 3,
+      initialIndex: 1,
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text("Home Page"),
 
-      ),
-      tagHero: "Deneme",
-      chilf: Container(
-        color: Colors.redAccent,
-        child: Center(
-          child: RaisedButton(
-            onPressed: (){
-              Navigator.push(context,
-              CheckIs.check?CupertinoPageRoute(builder:(context) => PurplePage()):CupertinoPageRoute(builder:(context) => PurplePage())
-              );
+          bottom: TabBar(
+
+            tabs: [
+              Tab(
+                  icon: Icon(Icons.directions_car),
+                child: Center(
+                  child: Text("Vehicle"),
+                ),
+              ),
+              Tab(icon: Icon(Icons.directions_transit)),
+              Tab(icon: Icon(Icons.directions_bike)),
+            ],
+            onTap: (int){
+              if(int==0){
+                vehicles();
+              }
             },
           ),
+
+        ),
+        body: TabBarView(
+          children: [
+            vehicles(),
+            Icon(Icons.directions_transit),
+            Icon(Icons.directions_bike),
+          ],
         ),
       ),
     );
