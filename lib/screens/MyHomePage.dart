@@ -1,4 +1,6 @@
 import 'package:appbarbyflutter/main.dart';
+import 'package:appbarbyflutter/widget/MyBottomNavBar.dart';
+import 'package:appbarbyflutter/widget/bottomNavigate.dart';
 import 'package:appbarbyflutter/widget/firstTab.dart';
 import 'package:appbarbyflutter/widget/seccondTab.dart';
 import 'package:appbarbyflutter/widget/thirsTab.dart';
@@ -20,51 +22,13 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
 
-   return Scaffold(
-    appBar: AppBar(
+   return SafeArea(
+     child: Scaffold(
 
-      title: Text(widget.title),
-     
-
-    ),
-     body: CupertinoTabScaffold(
-        tabBar: CupertinoTabBar(
-          items: [
-            BottomNavigationBarItem(
-                icon: Icon(Icons.home_sharp),
-                title: Text("Home")
-
-            ),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.build),
-                title: Text("Option")
-            ),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.message),
-                title: Text("Message")
-            )
-          ],
-        ),
-       tabBuilder: (contex,index){
-          if(index==0){
-            return CupertinoTabView(
-              navigatorKey: firstTabNavKey,
-              builder: (context)=>firstTab(),
-            );
-          }
-          else if(index==1){
-            return CupertinoTabView(
-              navigatorKey: secondTabNavKey,
-              builder: (context)=>seccondTab(),
-            );
-          }
-          else{
-            return CupertinoTabView(
-              navigatorKey: thirdTabNavKey,
-              builder: (context)=>thirsTab(),
-            );
-          }
-       },
+       body: Center(
+         child: Text("Hello"),
+       ),
+       bottomNavigationBar: bottomTabView(),
      ),
    );
   }
